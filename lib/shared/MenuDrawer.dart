@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/screens/InductanceCalculator.dart';
+import 'package:flutter_application_1/screens/LedCalculator.dart';
+import 'package:flutter_application_1/screens/ResistorCalculator.dart';
+import '../screens/CapacitorCalculator.dart';
 import '../screens/Embedded.dart';
 import '../screens/EmbeddedWhat.dart';
 
@@ -41,7 +45,20 @@ class MenuDrawer extends StatelessWidget {
             case 'What is Embedded System':
              screens = EmbeddedWhatScreen();
              break;
+            case 'Resistor Calculator':
+             screens = ResistarCalculator();
+            break;
+            case 'Capacitor Calculator':
+             screens = CapacitorCalculator();
+            break;
+            case 'Inductance Calculator':
+             screens = InductanceCalculator();
+            break;
+            case 'Led Calculator':
+             screens = LedCalculator();
+            break;
           }
+          Navigator.of(context).pop();
           Navigator.of(context).push(
             MaterialPageRoute(builder: (context) => screens)
           );
