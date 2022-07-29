@@ -61,6 +61,15 @@ flutter:
   assets:
     - assets/embedded.jpg
     - assets/embeddedWhat.jpg
+    - assets/res-series.jpg
+    - assets/res-parallell.jpg
+    - assets/cap-series.jpg
+    - assets/cap-parallel.jpg
+    - assets/Ind-series.jpg
+    - assets/Ind-parallel.jpg
+    - assets/ldh-led.jpg
+    - assets/pblh-led.jpg
+    - assets/slh-led.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
