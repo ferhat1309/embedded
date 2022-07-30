@@ -13,9 +13,8 @@ class InductanceCalculator extends StatefulWidget {
 
 class _InductanceCalculatorState extends State<InductanceCalculator> {
   final double fontSize = 18;
-  final TextEditingController txtNumberofResistor = TextEditingController();
+  final TextEditingController txtNumberofInd = TextEditingController();
   List<TextEditingController> _controller = [];
-  //String result = '';
   bool isSerial = true;
   bool isParallel = false;
   int listCount = 0;
@@ -79,7 +78,7 @@ class _InductanceCalculatorState extends State<InductanceCalculator> {
           child: Padding(
             padding: const EdgeInsets.all(20.0),
             child: TextField(
-              controller: txtNumberofResistor,
+              controller: txtNumberofInd,
               keyboardType: TextInputType.number,
               decoration:
                   InputDecoration(hintText: 'Please Enter Number of Inductance'),
@@ -100,7 +99,7 @@ class _InductanceCalculatorState extends State<InductanceCalculator> {
                     style: TextStyle(fontSize: fontSize),
                   ),
                   onPressed: () {
-                    listCount = (int.tryParse(txtNumberofResistor.text))!;
+                    listCount = (int.tryParse(txtNumberofInd.text))!;
                     for (int i = 0; i <= listCount; i++)
                       _controller.add(TextEditingController());
                     setState(() {});
@@ -118,14 +117,14 @@ class _InductanceCalculatorState extends State<InductanceCalculator> {
           ),
         ),
         Expanded(
-          flex: int.tryParse(txtNumberofResistor.text) != null ? 6 : 5,
+          flex: int.tryParse(txtNumberofInd.text) != null ? 6 : 5,
           child: ListView.builder(
             itemCount: listCount,
             itemBuilder: (BuildContext context, int index) {
               return TextField(
                 controller: _controller[index],
                 keyboardType: TextInputType.number,
-                decoration: InputDecoration(hintText: '${index + 1} Resistor'),
+                decoration: InputDecoration(hintText: '${index + 1} Inductance'),
               );
             },
           ),
@@ -150,18 +149,18 @@ class _InductanceCalculatorState extends State<InductanceCalculator> {
   }
 
   void calculated() {
-    List<double> valuesResistor = [];
+    List<double> valuesInd = [];
     double sum = 0;
     for (int i = 0; i < listCount; i++) {
-      valuesResistor.add(double.tryParse(_controller[i].text)!);
+      valuesInd.add(double.tryParse(_controller[i].text)!);
     }
     if (isSerial == true) {
       for (int i = 0; i < listCount; i++) {
-        sum = sum + valuesResistor[i];
+        sum = sum + valuesInd[i];
       }
     } else {
       for (int i = 0; i < listCount; i++) {
-        sum = (sum + (1 / valuesResistor[i]));
+        sum = (sum + (1 / valuesInd[i]));
       }
       sum = 1 / sum;
     }

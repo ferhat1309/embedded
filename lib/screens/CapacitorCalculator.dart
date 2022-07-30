@@ -13,7 +13,7 @@ class CapacitorCalculator extends StatefulWidget {
 
 class _CapacitorCalculatorState extends State<CapacitorCalculator> {
   final double fontSize = 18;
-  final TextEditingController txtNumberofResistor = TextEditingController();
+  final TextEditingController txtNumberofCap = TextEditingController();
   List<TextEditingController> _controller = [];
   //String result = '';
   bool isSerial = true;
@@ -79,10 +79,10 @@ class _CapacitorCalculatorState extends State<CapacitorCalculator> {
           child: Padding(
             padding: const EdgeInsets.all(20.0),
             child: TextField(
-              controller: txtNumberofResistor,
+              controller: txtNumberofCap,
               keyboardType: TextInputType.number,
               decoration:
-                  InputDecoration(hintText: 'Please Enter Number of Resistor'),
+                  InputDecoration(hintText: 'Please Enter Number Capacitor'),
             ),
           ),
         ),
@@ -101,7 +101,7 @@ class _CapacitorCalculatorState extends State<CapacitorCalculator> {
                     style: TextStyle(fontSize: fontSize),
                   ),
                   onPressed: () {
-                    listCount = (int.tryParse(txtNumberofResistor.text))!;
+                    listCount = (int.tryParse(txtNumberofCap.text))!;
                     for (int i = 0; i <= listCount; i++)
                       _controller.add(TextEditingController());
                     setState(() {});
@@ -119,14 +119,14 @@ class _CapacitorCalculatorState extends State<CapacitorCalculator> {
           ),
         ),
         Expanded(
-          flex: int.tryParse(txtNumberofResistor.text) != null ? 6 : 5,
+          flex: int.tryParse(txtNumberofCap.text) != null ? 6 : 5,
           child: ListView.builder(
             itemCount: listCount,
             itemBuilder: (BuildContext context, int index) {
               return TextField(
                 controller: _controller[index],
                 keyboardType: TextInputType.number,
-                decoration: InputDecoration(hintText: '${index + 1} Resistor'),
+                decoration: InputDecoration(hintText: '${index + 1} Capacitor'),
               );
             },
           ),
@@ -151,18 +151,18 @@ class _CapacitorCalculatorState extends State<CapacitorCalculator> {
   }
 
   void calculated() {
-    List<double> valuesResistor = [];
+    List<double> valuesCap = [];
     double sum = 0;
     for (int i = 0; i < listCount; i++) {
-      valuesResistor.add(double.tryParse(_controller[i].text)!);
+      valuesCap.add(double.tryParse(_controller[i].text)!);
     }
     if (isSerial == false) {
       for (int i = 0; i < listCount; i++) {
-        sum = sum + valuesResistor[i];
+        sum = sum + valuesCap[i];
       }
     } else {
       for (int i = 0; i < listCount; i++) {
-        sum = (sum + (1 / valuesResistor[i]));
+        sum = (sum + (1 / valuesCap[i]));
       }
       sum = 1 / sum;
     }
