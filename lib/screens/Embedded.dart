@@ -28,7 +28,7 @@ class EmbeddedScreen extends StatelessWidget {
                     borderRadius: BorderRadius.all(Radius.circular(15)),
                     color: Colors.white60),
                 child: Text(
-                  'Hi\nYou are Welcome \nMy Embedded App',
+                  'Hi\n Welcome \nMy Embedded App',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontSize: 18,
